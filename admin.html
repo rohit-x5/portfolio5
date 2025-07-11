@@ -2,55 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
-  
-  <!-- Title & Styles -->
-  <title>Admin Panel | Rohit Lokhande</title>
+  <title>Admin Login | Rohit Lokhande</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="fevicon.png" type="image/png" />
 </head>
-
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <header>
     <div class="nav-container">
-      <h2 class="logo">Admin Panel</h2>
+      <h2 class="logo">Rohit Lokhande</h2>
       <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </div>
     <nav id="navMenu" class="nav-links hidden">
       <a href="index.html">Home</a>
-      <a href="admin.html">Logout</a>
+      <a href="about.html">About Me</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#projects">Projects</a>
     </nav>
   </header>
 
-  <!-- Admin Content -->
+  <!-- Admin Login Section -->
   <section class="section-container glass-box">
-    <h2>Submitted Form Data</h2>
-    <table id="dataTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Mobile</th>
-          <th>Message</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Data from Firebase will appear here -->
-      </tbody>
-    </table>
-    <button class="download-btn" onclick="downloadCSV()">Download as CSV</button>
+    <h2>Secure Admin Access</h2>
+    <form onsubmit="return verifyLogin()">
+      <input type="text" id="adminID" placeholder="Enter Admin ID" required />
+      <input type="password" id="adminPass" placeholder="Enter Password" required />
+      <button type="submit">Login</button>
+      <p id="loginError" style="color: red; margin-top: 0.5rem;"></p>
+    </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Rohit Lokhande. Admin Dashboard</p>
+    <div class="footer-links">
+      <a href="https://github.com/rohit-x5"><img src="assets/github.png" class="icon" alt="GitHub" />GitHub</a>
+      <a href="https://www.linkedin.com/in/rohit-lokhande-5ba8a7278/"><img src="assets/linkedin.png" class="icon" alt="LinkedIn" />LinkedIn</a>
+    </div>
+    <p>&copy; 2025 Rohit Lokhande. All rights reserved.</p>
   </footer>
 
   <!-- JS -->
@@ -59,11 +52,20 @@
       document.getElementById("navMenu").classList.toggle("hidden");
     }
 
-    function downloadCSV() {
-      alert("CSV download feature coming soon.");
-    }
+    function verifyLogin() {
+      const id = document.getElementById("adminID").value.trim();
+      const pass = document.getElementById("adminPass").value.trim();
+      const error = document.getElementById("loginError");
 
-    // Firebase integration will be added here
+      // Replace with real validation
+      if (id === "Rohit5" && pass === "Rohit@x55$") {
+        window.location.href = "admin-panel.html"; // Replace with actual dashboard
+        return false;
+      } else {
+        error.textContent = "Invalid Admin ID or Password.";
+        return false;
+      }
+    }
   </script>
 
 </body>
