@@ -1,0 +1,47 @@
+<!-- form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/fevicon.png" />
+</head>
+<body>
+  <header>
+    <h1>Contact Rohit Lokhande</h1>
+    <a href="index.html">Back to Home</a>
+  </header>
+
+  <section class="section-container">
+    <h2>Send a Message</h2>
+    <form id="contactForm">
+      <input type="text" id="name" name="name" placeholder="Name" required />
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" required />
+      <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button class="contact-button" type="submit">Submit</button>
+    </form>
+    <p id="responseMessage"></p>
+  </section>
+
+  <script>
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const mobile = document.getElementById('mobile').value;
+      const message = document.getElementById('message').value;
+      fetch("https://your-firebase-database.firebaseio.com/messages.json", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, mobile, message })
+      })
+      .then(res => res.ok ? window.location.href = "thankyou.html" : alert("Failed to submit"));
+    });
+  </script>
+</body>
+</html>
