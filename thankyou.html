@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thank You!</title>
-  
-  <!-- Fonts & CSS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Thank You</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-
-  <div class="thank-you-container">
+  <section class="thankyou-container">
     <h1>Thank You!</h1>
-    <p>Your message has been received. I’ll get back to you shortly.</p>
-    <p class="redirect-message">You will be redirected to the homepage in 5 seconds...</p>
-    <a href="index.html" class="back-link">Return to Homepage</a>
-  </div>
-
-  <script>
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 5000);
-  </script>
-
+    <div class="heart">❤️</div>
+    <p>Your message has been sent successfully.</p>
+    <div class="back-link-wrapper">
+      <a class="back-link" href="index.html">Back to Home</a>
+    </div>
+  </section>
 </body>
 </html>
